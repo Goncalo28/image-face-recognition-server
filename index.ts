@@ -8,6 +8,7 @@ import Clarifai from "clarifai";
 const PORT = process.env.PORT || 5000;
 
 const CLARIFAI_API = process.env.CLARIFAI_API;
+const DATABASE_URL = process.env.DATABASE_URL;
 const DB_CLIENT = process.env.DB_CLIENT;
 const DB_HOST = process.env.DB_HOST;
 const DB_USER = process.env.DB_USER;
@@ -21,10 +22,8 @@ const clarifaiApi: any = new Clarifai.App({
 const db = knex({
   client: DB_CLIENT,
   connection: {
-    host: DB_HOST,
-    user: DB_USER,
-    password: DB_PASSWORD,
-    database: DB_NAME,
+    connectionString: DATABASE_URL,
+    ssl: true,
   },
 });
 
