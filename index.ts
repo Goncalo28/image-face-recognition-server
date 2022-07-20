@@ -5,6 +5,8 @@ import cors from "cors";
 import knex from "knex";
 import Clarifai from "clarifai";
 
+const PORT = process.env.PORT || 5000;
+
 const CLARIFAI_API = process.env.CLARIFAI_API;
 const DB_CLIENT = process.env.DB_CLIENT;
 const DB_HOST = process.env.DB_HOST;
@@ -128,6 +130,6 @@ app.put("/image", (req, res) => {
     .catch(() => res.status(400).json("unable to get entries"));
 });
 
-app.listen(8000, () => {
-  console.log("app is running on port 8000");
+app.listen(PORT, () => {
+  console.log("app is running on port", PORT);
 });
